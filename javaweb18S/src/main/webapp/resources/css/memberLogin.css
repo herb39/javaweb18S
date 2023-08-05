@@ -1,0 +1,135 @@
+@charset "UTF-8";
+.container-login100 {
+		width: 100;
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+		align-items: center;
+		padding: 15px;
+		background-repeat: no-repeat;
+		background-size: cover;
+		background-position: center;
+		position: relative;
+}
+.wrap-login100 {
+		width: 400px;
+		background: #fff;
+		border-radius: 10px;
+		overflow: hidden;
+		-webkit-box-shadow: 0 3px 20px 0 rgba(0,0,0,.1);
+}
+.p-r-55 {
+		padding-right: 55px;
+}
+.p-l-55 {
+		padding-left: 55px;
+}
+.p-b-30 {
+		padding-bottom: 30px;
+}
+.p-t-80 {
+		padding-top: 80px;
+}
+.login100-form {
+		width: 100%;
+}
+.login100-form-title {
+		display: block;
+		color: #4b2354;
+		font-size: 30px;
+		line-height: 1.2;
+		text-align: center;
+}
+.p-b-37 {
+		padding-bottom: 37px;
+}
+.validate-input {
+		position: relative;
+}
+.wrap-input100 {
+		width: 100%;
+		background-color: #fff;
+		border-radius: 20px;
+}
+.m-b-20 {
+		margin-bottom: 20px;
+}
+.input100 {
+		height: 50px;
+		font-size: 16px;
+		color: #4b2354;
+		line-height: 1.2;
+		display: block;
+		width: 100%;
+		background: 0 0;
+		padding: 0 20px 0 23px;
+}
+input {
+		outline: none;
+		overflow: visible;
+		margin: 0;
+		touch-action: manipulation;
+		border-radius: 20px;
+		border-color: #fcf;
+}
+.focus-input100 {
+		display: block;
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		top: 0;
+		left: 0;
+		pointer-events: none;
+		border-radius: 20px;
+		-webkit-box-shadow: 0 5px 30px 0 rgba(0,0,0,.2);
+		transition: all .4s;
+}
+.m-b-25 {
+		margin-bottom: 25px;
+}
+.container-login100-form-btn {
+		width: 100%;
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+}
+.login100-form-btn {
+		dosplay: flex;
+		justify-content: center;
+		align-items: center;
+		padding: 0 20px;
+		min-width: 160px;
+		height: 50px;
+		background-color: #bd59d4;
+		border-radius: 25px;
+		color: #fff;
+		line-height: 1.2;
+		transition: all .4s;
+		-webkit-box-shadow: 0 10px 30px 0 rgba(189,89,212,.5);
+}
+.login100-form-btn:hover {
+		background-color: #4b2354;
+		-webkit-box-shadow: 0 10px 30px 0 rgba(189,89,212,.8);
+}
+button {
+		outlone: none;
+		border: none;
+		background: 0 0;
+		-webkit-appearance: button;
+		overflow: visible;
+		margin: 0;
+		touch-action: manipulation;
+}
+.text-center {
+		text-align: center;
+}
+.txt2 {
+		font-size: 16px;
+		line-height: 1.4;
+		color: #4b2354;
+}
+a {
+		margin: 0;
+		text-decoration: none;
+		background-color: transparent;
+}

@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.spring.javaweb18S.dao.SongDAO">
+	
+	
+	<select id="getChart" resultType="com.spring.javaweb18S.vo.ChartVO">
+		select * from s_chart;
+	</select>
+
+	<select id="getPlayListIdx" resultType="com.spring.javaweb18S.vo.PlayListVO">
+		select * from s_playList where memberIdx = #{idx};
+	</select>
+	
+	<!-- <select id="getSongList" resultType="com.spring.javaweb18S.vo.SongVO">
+		select image, title, artist, album, releaseDate, genre, lyrics from s_song;
+	</select> -->
+
+	<select id="getSongTitle" resultType="com.spring.javaweb18S.vo.SongVO">
+		select * from s_song where title = #{title};
+	</select>
+
+	<!-- <select id="getSongInfo" resultType="com.spring.javaweb18S.vo.SongVO">
+		SELECT s.*, c.songIdx FROM s_song s, s_chart c WHERE s.idx = c.songIdx LIMIT 1;
+	</select> -->
+	
+	<!-- <select id="getSongInfo" parameterType="int" resultType="com.spring.javaweb18S.vo.SongVO">
+	    SELECT s.*
+	    FROM s_song s
+	    INNER JOIN s_chart c ON s.idx = c.songIdx
+	    WHERE c.songIdx = #{idx}
+	    LIMIT 1;
+	</select> -->
+
+	<select id="getSongInfo" parameterType="int" resultType="com.spring.javaweb18S.vo.SongVO">
+	    SELECT *
+	    FROM s_song
+	    WHERE idx = #{idx}
+	    LIMIT 1;
+	</select>
+	
+	<select id="getSongList" resultType="com.spring.javaweb18S.vo.SongVO">
+		select * from s_song;
+	</select>
+
+	<select id="getSongListT" resultType="com.spring.javaweb18S.vo.SongVO">
+		select * from s_song order by idx desc limit 10;
+	</select>
+	
+	<select id="getSongInfoSearch" resultType="com.spring.javaweb18S.vo.SongVO">
+		select * from s_song where ${search} like concat('%',#{searchString},'%') order by idx desc;
+	</select>
+	
+	<select id="getSongSearch" resultType="com.spring.javaweb18S.vo.ChartVO">
+		select * from s_song where ${search} like concat('%',#{searchString},'%') order by idx desc;
+	</select>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<delete id="setSongDelete">
+		delete from s_song where idx = #{idx};
+	</delete>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<!-- <insert id="setChartUpdate">
+		insert into s_chart values (default,#{vo.image},#{vo.title},#{vo.artist},#{vo.album},#{vo.ranking});
+	</insert> -->
+	
+	
+	
+	
+	<update id="setMatchingSong">
+		UPDATE s_chart c
+       	JOIN s_song s ON c.title = s.title AND c.artist = s.artist
+       	SET c.songIdx = s.idx;
+	</update>
+	
+	<update id="setChartUpdate">
+		update s_chart set image = #{vo.image}, title = #{vo.title}, artist = #{vo.artist}, album = #{vo.album}, ranking = #{vo.ranking} where idx = #{vo.ranking};
+	</update>
+
+	<update id="setSongInfoUpdate">
+		<if test="vo.music != null and vo.music != ''">
+			update s_song set title = #{vo.title}, image = #{vo.image}, artist = #{vo.artist}, album = #{vo.album}, music = #{vo.music}, releaseDate = #{vo.releaseDate}, genre = #{vo.genre}, lyrics = #{vo.lyrics} where idx = #{vo.idx};
+		</if>
+		<if test="vo.music == null or vo.music == ''">
+			update s_song set title = #{vo.title}, image = #{vo.image}, artist = #{vo.artist}, album = #{vo.album}, releaseDate = #{vo.releaseDate}, genre = #{vo.genre}, lyrics = #{vo.lyrics} where idx = #{vo.idx};
+		</if>
+	</update>
+	
+	<!-- <update id="setChartUpdate">
+		update s_chart set image = #{songVO.image}, title = #{songVO.title}, artist = #{songVO.artist}, album = #{songVO.album}, ranking = #{songVO.ranking};
+	</update> -->
+	
+	<!-- s_song테이블 s_chart테이블 idx 이어주기 -->
+	<!-- UPDATE s_chart c
+	INNER JOIN s_song s ON c.artist = s.artist AND c.title = s.title
+	SET c.songIdx = s.idx; -->
+	
+	
+	
+	
+	
+	<!-- <insert id="songInfoUpdate">
+		insert into s_song values (default,#{vo.image},#{vo.title},#{vo.artist},#{vo.album},#{vo.releaseDate},#{vo.genre},#{vo.lyrics});
+	</insert> -->
+	
+	<insert id="setSongInfoInsert" parameterType="com.spring.javaweb18S.vo.SongVO">
+	    insert into s_song (idx, image, title, artist, album, releaseDate, genre, lyrics) values
+	    (default,#{vo.image},#{vo.title},#{vo.artist},#{vo.album},#{vo.releaseDate},#{vo.genre},#{vo.lyrics});
+	</insert>
+	
+	<insert id="setSongInfoAdminInsert" parameterType="com.spring.javaweb18S.vo.SongVO">
+	    insert into s_song (idx, title, image, artist, album, music, releaseDate, genre, lyrics) values
+	    (default,#{vo.title},#{vo.image},#{vo.artist},#{vo.album},#{vo.music},#{vo.releaseDate},#{vo.genre},#{vo.lyrics});
+	</insert>
+
+	<!-- <insert id="setSongInsert" parameterType="com.spring.javaweb18S.vo.SongVO">
+		<if test="tempVOS != null">
+			insert into s_song (idx, image, title, artist, album, releaseDate, genre, lyrics) values 
+			<foreach collection="tempVOS" item="tempVO" separator=",">
+				(default,#{tempVO.image},#{tempVO.title},#{tempVO.artist},#{tempVO.album},#{tempVO.releaseDate},#{tempVO.genre},#{tempVO.lyrics})
+			</foreach>
+		</if>
+	</insert> -->
+	
+	
+	<!-- <update id="songInfoUpdate">
+		update s_song set image = #{vo.image}, title = #{vo.title}, artist = #{vo.artist}, album = #{vo.album}, releaseDate = #{vo.releaseDate}, genre = #{vo.genre}, lyrics = #{vo.lyrics} where idx = #{vo.ranking};
+	</update> -->
+</mapper>

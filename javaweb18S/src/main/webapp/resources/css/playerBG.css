@@ -1,0 +1,19 @@
+@charset "UTF-8";
+* {
+	font-family: 'IBMPlexSansKR-Regular';
+}
+.bgImage {
+	position: fixed;
+	width: 650px;
+	height: 600px;
+	background-size: cover;
+	background-repeat: no-repeat;
+	object-fit: cover;
+	z-index: -99;
+	filter: blur(30px);
+	overflow: hidden;
+	width: calc(100% + 100px);
+	height: calc(100% + 100px);
+	margin: -22px;
+	opacity: 0.85;
+}

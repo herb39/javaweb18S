@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.spring.javaweb18S.dao.ShopDAO">
+
+	<select id="getCategoryArtist" resultType="com.spring.javaweb18S.vo.ProductVO">
+	  select * from s_categoryArtist order by categoryArtistCode desc;
+	</select>
+	
+	<select id="getCategoryArtistOne" resultType="com.spring.javaweb18S.vo.ProductVO">
+	  select * from s_categoryArtist
+	  where categoryArtistCode = #{vo.categoryArtistCode} and categoryArtistName = #{vo.categoryArtistName};
+	</select>
+	
+	<select id="getCategoryProduct" resultType="com.spring.javaweb18S.vo.ProductVO">
+	  select product.*, artist.categoryArtistName as categoryArtistName 
+	  from s_categoryProduct product, s_categoryArtist artist
+	  where product.categoryArtistCode = artist.categoryArtistCode
+	  order by categoryProductCode desc;
+	</select>
+	
+	<select id="getCategoryArtistName" resultType="com.spring.javaweb18S.vo.ProductVO">
+		select * from s_categoryArtist;
+	</select>
+	
+	<select id="getCategoryProductOne" resultType="com.spring.javaweb18S.vo.ProductVO">
+		select * from s_categoryProduct where
+		  categoryArtistCode = #{vo.categoryArtistCode} and
+		  categoryProductCode = #{vo.categoryProductCode} and
+		  categoryProductName = #{vo.categoryProductName}
+	</select>
+	
+  <select id="getCategorySubName" resultType="com.spring.javaweb18S.vo.ProductVO">
+  	select * from s_categoryProduct where categoryArtistCode = #{categoryArtistCode};
+  </select>
+  
+  <select id="getShopProduct" resultType="com.spring.javaweb18S.vo.ProductVO">
+  	select * from s_product where idx = #{idx};
+  </select>
+  
+  <select id="getProductMaxIdx" resultType="com.spring.javaweb18S.vo.ProductVO">
+  	select * from s_product order by idx desc limit 1;
+  </select>
+  
+  <select id="getSubTitle" resultType="com.spring.javaweb18S.vo.ProductVO">
+  	select categoryProductName from s_categoryProduct group by categoryProductName order by categoryProductName;
+  </select>
+  
+  <select id="getProductList" resultType="com.spring.javaweb18S.vo.ProductVO">
+    <if test='part == "전체"'>
+  		select * from s_product order by idx desc;
+  	</if>
+    <if test='part != "전체"'>     <!-- 01003 -->
+  		select product.*, sub.categoryProductName from s_product product, s_categoryProduct sub 
+  		  where sub.categoryProductName = #{part} and substring(product.productCode,4,3)=sub.categoryProductCode order by idx desc;
+  	</if>
+  </select>
+
+	
+  <select id="getProductInfor" resultType="com.spring.javaweb18S.vo.ProductVO">
+  	select product.*, artist.categoryArtistName, sub.categoryProductName
+  	from s_product product, s_categoryArtist artist, s_categoryProduct sub
+  	where productName=#{productName} order by idx limit 1;
+  </select>
+  
+  <select id="getOptionList" resultType="com.spring.javaweb18S.vo.OptionVO">
+  	select * from s_option where productIdx = #{productIdx} order by optionName;
+  </select>
+  
+  <select id="getOptionSame" resultType="int">
+    select count(*) from s_option where productIdx=#{productIdx} and optionName=#{optionName};
+  </select>
+  
+  <select id="getCategoryProductName" resultType="com.spring.javaweb18S.vo.ProductVO">
+  	select * from s_product
+  	where categoryArtistCode=#{categoryArtistCode} and categoryProductCode=#{categoryProductCode};
+  </select>
+  
+  <select id="getShopOption" resultType="com.spring.javaweb18S.vo.OptionVO">
+  	select * from s_option where productIdx = #{productIdx} order by idx;
+  </select>
+  
+  <select id="getProductOne" resultType="com.spring.javaweb18S.vo.ProductVO">
+  	select * from s_product where substring(productCode,4,3) = #{categoryProductCode};  <!-- 상품코드 : A0100125 --> 
+  </select>
+  
+  <select id="getCartProductOptionSearch" resultType="com.spring.javaweb18S.vo.CartVO">
+  	select * from s_cart where productName=#{productName} and optionName=#{optionName} and mid=#{mid};
+  </select>
+  
+  <select id="getCartList" resultType="com.spring.javaweb18S.vo.CartVO">
+  	select * from s_cart where mid=#{mid} order by idx;
+  </select>
+  
+  <select id="getCartIdx" resultType="com.spring.javaweb18S.vo.CartVO">
+  	select * from s_cart where idx = #{idx};
+  </select>
+  
+  <select id="getOrderMaxIdx" resultType="com.spring.javaweb18S.vo.OrderVO">
+  	select max(idx) as maxIdx from s_order;
+  </select>
+  
+  <select id="getOrderDelivery" resultType="com.spring.javaweb18S.vo.DeliveryVO">
+    select * from s_delivery where orderIdx = #{orderIdx};
+  </select>
+  
+  <select id="getMyOrderList" resultType="com.spring.javaweb18S.vo.DeliveryVO">
+    <if test='mid == "전체"'>
+      SELECT oder.*,delivery.* 
+      from s_order oder join s_delivery delivery using(orderIdx) 
+      where date(orderDate) = substring(now(),1,10)
+      order by delivery.idx desc limit #{startIndexNo},#{pageSize};
+    </if>
+    <if test='mid != "전체"'>
+      SELECT oder.*,delivery.* 
+      from s_order oder join s_delivery delivery using(orderIdx) 
+      where delivery.mid=#{mid} and date(orderDate) = substring(now(),1,10)
+      order by delivery.idx desc limit #{startIndexNo},#{pageSize};
+    </if>
+  </select>
+  
+  <select id="totRecCnt" resultType="int">
+    <if test='mid == "전체"'>
+      select count(*) from s_order
+      where date(orderDate) = substring(now(),1,10);
+    </if>
+    <if test='mid != "전체"'>
+      select count(delivery.idx) from s_delivery oder join s_delivery delivery using(orderIdx), s_member member
+      where member.mid = #{mid} and date(orderDate) = substring(now(),1,10);
+    </if>
+  </select>
+  
+  <select id="totRecCntMyOrderStatus" resultType="int">
+    <if test="mid == '전체'">
+      SELECT count(*) from s_order;
+    </if>
+    <if test="mid != '전체' and conditionOrderStatus == '전체'">
+        SELECT count(*)
+        from s_order a join s_delivery b using(orderIdx) 
+        <![CDATA[ where b.mid=#{mid} and date(orderDate) >= date(#{startJumun}) and date(orderDate) <= date(#{endJumun}) order by orderDate desc ]]>;
+    </if>
+    <if test="mid != '전체' and conditionOrderStatus != '전체'">
+        SELECT count(*)
+        from s_order a join s_delivery b using(orderIdx) 
+        <![CDATA[ where b.mid=#{mid} and date(orderDate) >= date(#{startJumun}) and date(orderDate) <= date(#{endJumun}) and b.orderStatus=#{conditionOrderStatus} order by orderDate desc ]]>;
+    </if>
+  </select>
+  
+  <select id="totRecCntMyOrderCondition" resultType="int">
+    SELECT count(*) FROM s_order a JOIN s_delivery b USING(orderIdx)
+	    <![CDATA[ WHERE b.mid=#{mid} AND now() <= date(date_add(orderDate, interval #{conditionDate} day)) ]]>
+  </select>
+  
+  <select id="getOrderCondition" resultType="com.spring.javaweb18S.vo.DeliveryVO">
+    SELECT a.*, b.* 
+	    FROM s_order a JOIN s_delivery b USING(orderIdx) 
+	    <![CDATA[ WHERE b.mid=#{mid} AND now() <= date(date_add(orderDate, interval #{conditionDate} day)) ]]>
+	    ORDER BY orderDate DESC limit #{startIndexNo},#{pageSize};
+  </select>
+  
+  <select id="getMainImageSearch" resultType="com.spring.javaweb18S.vo.MainImageVO">
+    <if test='productCode == ""'>
+	    select m.*, p.productName from s_mainImage m join s_product p using(productCode) order by idx desc limit 4;
+    </if>
+    <if test='productCode != ""'>
+	    select m.*, p.productName from s_mainImage m join s_product p using(productCode) where productCode = #{productCode};
+    </if>
+  </select>
+  
+  <select id="getMainImageList" resultType="com.spring.javaweb18S.vo.MainImageVO">
+    select m.*, p.productName from s_mainImage m join s_product p using(productCode) group by productCode order by idx desc;
+  </select>
+  
+  <select id="getProductTitle" resultType="com.spring.javaweb18S.vo.ProductVO">
+  	select categoryArtistName from s_categoryArtist group by categoryArtistName order by categoryArtistName;
+  </select>
+  
+  <select id="getShopList" resultType="com.spring.javaweb18S.vo.ProductVO">
+    <if test='part == "전체"'>
+  		select * from s_product order by idx desc;
+  	</if>
+    <if test='part != "전체"'>     <!-- 01003 -->
+  		select product.*, artist.categoryArtistName from s_product product, s_categoryArtist artist
+  		  where artist.categoryArtistName = #{part} and substring(product.productCode,1,2) = artist.categoryArtistCode order by idx desc;
+  	</if>
+  </select>
+ 
+  <select id="getShopListT" resultType="com.spring.javaweb18S.vo.ProductVO">
+  		select * from s_product order by idx desc limit 3;
+  </select>
+  
+  
+  
+  
+	<insert id="setCategoryArtistInput">
+	  insert into s_categoryArtist values (#{vo.categoryArtistCode},#{vo.categoryArtistName})
+	</insert>
+	
+	<insert id="setCategoryProductInput">
+	  insert into s_categoryProduct values (#{vo.categoryArtistCode},#{vo.categoryProductCode},#{vo.categoryProductName});
+	</insert>
+	
+  <insert id="setProductInput">
+    insert into s_product value (#{vo.idx},#{vo.categoryArtistCode},#{vo.categoryProductCode},#{vo.productCode},#{vo.productName},#{vo.detail},#{vo.mainPrice},#{vo.fSName},#{vo.content});
+  </insert>
+  
+  <insert id="setOptionInput">
+    insert into s_option values (default,#{vo.productIdx},#{vo.optionName},#{vo.optionPrice});
+  </insert>
+  
+  <insert id="cartInput">
+    insert into s_cart values (default,default,#{vo.mid},#{vo.productIdx},#{vo.productName},#{vo.mainPrice},#{vo.thumbImg},#{vo.optionIdx},#{vo.optionName},#{vo.optionPrice},#{vo.optionNum},#{vo.totalPrice});
+  </insert>
+  
+  <insert id="setOrder">
+    insert into s_order values (default,#{vo.orderIdx},#{vo.mid},#{vo.productIdx},default,#{vo.productName},#{vo.mainPrice},#{vo.thumbImg},#{vo.optionName},#{vo.optionPrice},#{vo.optionNum},#{vo.totalPrice});
+  </insert>
+  
+  <insert id="setDelivery">
+    insert into s_delivery values (default,#{deliveryVO.oIdx},#{deliveryVO.orderIdx},#{deliveryVO.orderTotalPrice},#{deliveryVO.mid},#{deliveryVO.name},#{deliveryVO.address},#{deliveryVO.tel},#{deliveryVO.message},#{deliveryVO.payment},#{deliveryVO.payMethod},default);
+  </insert>
+  
+  <insert id="mainImageInput">
+    insert into s_mainImage values (default, #{vo.productCode}, #{vo.mainFName});
+  </insert>
+  
+  
+  
+  
+  <update id="cartUpdate">
+    update s_cart set optionNum=#{vo.optionNum},totalPrice=totalPrice+#{vo.totalPrice} where productName=#{vo.productName} and optionName=#{vo.optionName};
+  </update>
+  
+  
+  
+  <delete id="setProductDelete">
+	delete from s_product where idx = #{idx};
+  </delete>
+  
+  <delete id="setCategoryArtistDelete">
+    delete from s_categoryArtist where categoryArtistCode = #{categoryArtistCode};
+  </delete>
+  
+  <delete id="setCategoryProductDelete">
+    delete from s_categoryProduct where categoryProductCode = #{categoryProductCode};
+  </delete>
+  
+  <delete id="setOptionDelete">
+    delete from s_option where idx = #{idx};
+  </delete>
+  
+  <delete id="cartDelete">
+  	delete from s_cart where idx = #{idx};
+  </delete>
+  
+  <delete id="setCartDeleteAll">
+    delete from s_cart where idx = #{idx};
+  </delete>
+  
+  <delete id="mainImageDelete">
+    delete from s_mainImage where productCode = #{productCode};
+  </delete>
+	
+</mapper>

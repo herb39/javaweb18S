@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.spring.javaweb18S.dao.BoardDAO">
+
+  <select id="totRecCnt" resultType="int">
+    select count(*) from s_board;
+  </select>
+  
+  <select id="getBoardList" resultType="com.spring.javaweb18S.vo.BoardVO">
+    select * from s_board order by idx desc limit #{startIndexNo},#{pageSize};
+  </select>
+  
+  <select id="getBoardContent" resultType="com.spring.javaweb18S.vo.BoardVO">
+    select * from s_board where idx = #{idx};
+  </select>
+  
+  <select id="getPrevNext" resultType="com.spring.javaweb18S.vo.BoardVO">
+    select idx,title from s_board where idx in (
+		  (select idx from s_board where <![CDATA[idx < #{idx}]]> order by idx desc limit 1),
+		  (select idx from s_board where <![CDATA[idx > #{idx}]]> limit 1));
+  </select>
+   
+  <select id="totRecCntSearch" resultType="int">
+    select count(*) from s_board where ${search} like concat('%',#{searchString},'%');
+  </select>
+  
+  <select id="getBoardListSearch" resultType="com.spring.javaweb18S.vo.BoardVO">
+    select * from s_board where ${search} like concat('%',#{searchString},'%') order by idx desc limit #{startIndexNo},#{pageSize};
+  </select>
+  
+  <select id="getMaxGroupId" resultType="String">
+  	select max(groupId) from s_boardReply where boardIdx = #{boardIdx};
+  </select>
+  
+  <select id="setBoardReply" resultType="com.spring.javaweb18S.vo.BoardReplyVO">
+  	select * from s_boardReply where boardIdx=#{idx} order by idx;
+  </select>
+  
+  <select id="getBoardReplyIdx" resultType="com.spring.javaweb18S.vo.BoardReplyVO">
+  	select * from s_boardReply where idx=#{replyIdx};
+  </select>
+  
+  
+  
+  <insert id="setBoardInput">
+    insert into s_board values (default,#{vo.mid},#{vo.nickName},#{vo.title},#{vo.email},#{vo.content},#{vo.hostIp},default);
+  </insert>
+  
+  <insert id="setBoardReplyInput">
+    insert into s_boardReply values (default,#{replyVO.boardIdx},#{replyVO.mid},#{replyVO.nickName},default,#{replyVO.hostIp},#{replyVO.content});
+  </insert>
+  
+  
+  
+  
+  <update id="setBoardUpdate">
+    update s_board set title=#{vo.title},email=#{vo.email},content=#{vo.content},hostIp=#{vo.hostIp},wDate=now() where idx = #{vo.idx};
+  </update>
+
+  <update id="setBoardReplyUpdate">
+    update s_boardReply set content = #{content}, hostIp = #{hostIp} where idx = #{idx};
+  </update>
+  
+  
+  
+  <delete id="setBoardDelete">
+    delete from s_board where idx = #{idx};
+  </delete>
+  
+  <delete id="setBoardReplyDelete">
+   	delete from s_boardReply where boardIdx=#{boardIdx} and idx=#{idx};
+  </delete>
+  
+</mapper>

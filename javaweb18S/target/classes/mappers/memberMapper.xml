@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.spring.javaweb18S.dao.MemberDAO">
+	
+	<select id="getMemberIdCheck" resultType="com.spring.javaweb18S.vo.MemberVO">
+		select * from s_member where mid = #{mid};
+	</select>
+	
+	<select id="getMemberNickNameCheck" resultType="com.spring.javaweb18S.vo.MemberVO">
+		select * from s_member where nickName = #{nickName};
+	</select>
+	
+	<select id="getMemberNameCheck" resultType="com.spring.javaweb18S.vo.MemberVO">
+		select * from s_member where name = #{name};
+	</select>
+
+	<select id="getMemberIdFind" resultType="String">
+		select mid from s_member where name = #{name} and email = #{email};
+	</select>
+	
+	<select id="getMemberList" resultType="com.spring.javaweb18S.vo.MemberVO">
+	 	select * from s_member
+		 	<if test="mid != ''">where mid like concat('%',#{mid},'%')</if>
+	 	order by idx desc;
+	</select>
+	
+	<select id="getMemberListT" resultType="com.spring.javaweb18S.vo.MemberVO">
+	 	select * from s_member
+		 	<if test="mid != ''">where mid like concat('%',#{mid},'%')</if>
+	 	order by idx desc limit 5;
+	</select>
+	  
+	<select id="totRecCnt" resultType="int">
+	    select count(*) from s_member <if test="mid != ''"> where mid like concat('%',#{mid},'%') </if>;
+	</select>
+
+	<select id="getPlayListSearch" resultType="com.spring.javaweb18S.vo.PlayListVO">
+	  	select * from s_playList where content=#{content} and memberIdx=#{memberIdx};
+	</select>
+  
+	<select id="isPlayListExists" resultType="int">
+        SELECT COUNT(*) FROM s_playList WHERE memberIdx = #{memberIdx} AND name = #{name};
+    </select>
+	
+	<select id="getPlayList" resultType="com.spring.javaweb18S.vo.PlayListVO">
+	  	SELECT pl.* FROM s_playList pl WHERE pl.memberIdx = #{memberIdx};
+	</select>
+
+	<select id="getPlayListDetail" resultType="com.spring.javaweb18S.vo.PlayListVO">
+	  	SELECT pl.* FROM s_playList pl WHERE pl.idx = #{idx};
+	</select>
+
+
+	<select id="getSongsByContentList" resultType="com.spring.javaweb18S.vo.SongVO">
+	    SELECT * FROM s_song WHERE idx IN
+	    <foreach item="item" index="index" collection="contentList" open="(" separator="," close=")">
+	        #{item}
+	    </foreach>
+	</select>
+
+	<select id="getPlayListSongDetail" resultType="com.spring.javaweb18S.vo.SongVO">
+	    SELECT * FROM s_song WHERE idx IN
+	    <foreach item="item" index="index" collection="songIdxes" open="(" separator="," close=")">
+	        #{item}
+	    </foreach>
+	</select>
+
+
+
+
+	
+	<insert id="setMemberJoinOk">
+		insert into s_member values (default,#{vo.mid},#{vo.pwd},#{vo.nickName},#{vo.name},#{vo.tel},#{vo.email},default,default,default,#{vo.membership},default,default);
+	</insert>
+
+	<insert id="playListInput">
+	    insert into s_playList values (default,#{vo.memberIdx},#{vo.name},#{vo.content});
+	</insert>
+	
+	<insert id="createPlayList">
+        INSERT INTO s_playList (memberIdx, name) VALUES (#{memberIdx}, #{name});
+    </insert>
+	
+	
+	
+
+	
+	
+	
+	<update id="setMemberVisitProcess">
+		update s_member set lastDate = now(), where mid = #{vo.mid};
+	</update>
+	
+	<update id="setMemberPwdUpdate">
+		update s_member set pwd = #{pwd} where mid = #{mid};
+	</update>
+	
+	<update id="setMemberUpdateOk">
+		update s_member set nickName=#{vo.nickName},name=#{vo.name},tel=#{vo.tel},email=#{vo.email},image=#{vo.image} where mid=#{vo.mid};
+	</update>
+	
+	<update id="playListUpdate">
+	    update s_playList set content=#{vo.content} where memberIdx = #{vo.memberIdx};
+	</update>
+
+	<update id="playListNameUpdate">
+	    update s_playList set name = #{name} where idx = #{idx} and memberIdx = #{memberIdx};
+	</update>
+	
+	<!-- <update id="setPlayListSongDelete">
+	    UPDATE s_playList
+	    SET content = REPLACE(content, CONCAT(',', #{idxList}, ','), ',')
+	    WHERE content LIKE CONCAT('%,', #{idxList}, ',%')
+	</update> -->
+		
+
+
+	
+	
+	
+	
+	
+	<delete id="setMemberDeleteOk">
+		delete from s_member where mid = #{mid};
+	</delete>
+	
+	<delete id="setPlayListDelete">
+		delete from s_playList where idx = #{idx};
+	</delete>
+	
+	
+</mapper>
