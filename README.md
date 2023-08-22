@@ -25,6 +25,6 @@
       <img src="https://img.shields.io/badge/fontawesome-339AF0?style=for-the-badge&logo=fontawesome&logoColor=white">
     </li>
     <li>
-     그외 : chart.js / SweetAlert2 / CkEditor4 / Iamport 결제 모듈 / TOAST UI GRID
+     그외 : Jsoup / Selenium / CkEditor4 / 포트원 결제 모듈
     </li>
 </ul>
