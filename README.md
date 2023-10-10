@@ -117,6 +117,7 @@
             <ul>
                 <li>재생 위치 변경, 볼륨 조절, 가사 보기 가능</li>
                   <img src="https://i.imgur.com/c2TWmEh.png" width="500px">
+                  <img src="https://i.imgur.com/FzNwnmA.png" width="500px">
             </ul>
         </li>
         <br/>
