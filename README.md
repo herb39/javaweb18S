@@ -88,5 +88,5 @@
     </ul>
 </div>
 
- <img src="https://i.imgur.com/qDI53A2.png" width="500px">
+ <img src="https://imgur.com/e6e2ogX" width="500px">
                
