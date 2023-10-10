@@ -35,11 +35,18 @@
         <li>
             <strong>계정</strong>
             <ul>
-                <li>로그인,로그아웃,회원가입,회원탈퇴</li>
+                <li>로그인, 로그아웃, 회원가입, 회원탈퇴</li>
                 <li>ID찾기</li>
                 <li>비밀번호 재발급 - 이메일 전송</li>
                 <li>주문 목록</li>
                 <li>관리자 페이지를 통한 음원/상품 조회, 수정</li>
+            </ul>
+        </li>
+        <li>
+            <strong>음악 플레이어</strong>
+            <ul>
+                <li>음원 파일 재생</li>
+                <li>재생 위치, 볼륨 조절 / 가사 보기</li>
             </ul>
         </li>
         <li>
@@ -80,3 +87,6 @@
         </li>
     </ul>
 </div>
+
+ <img src="[https://i.imgur.com/qDI53A2.png](https://imgur.com/e6e2ogX)" width="500px">
+               
