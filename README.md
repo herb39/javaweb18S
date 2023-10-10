@@ -153,7 +153,8 @@
                     <img src="https://i.imgur.com/kvVDu99.png" width="500px">
             </ul>
         </li>
-      <li>
+        <br/>
+        <li>
             <strong>주문 정보</strong>
             <ul>
                 <li>주문 날짜 별 검색 가능</li>
