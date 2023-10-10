@@ -107,8 +107,8 @@
                 <li>아이디 중복검사</li>
                 <li>프론트 유효성 검사</li>
                 <li>SMTP이용 - 임시비밀번호 재발급</li>
-                  <img src="https://i.imgur.com/TaYaBZp.png" width="500px">
-                  <img src="https://i.imgur.com/AD2wTqr.png" width="500px">
+                  <img src="https://i.imgur.com/chBvyvC.png" width="500px">
+                  <img src="https://i.imgur.com/rt1fkSG.png" width="500px">
             </ul>
         </li>
         <br/>
