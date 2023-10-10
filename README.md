@@ -1,4 +1,4 @@
-<img width="1152" alt="image" src="https://github.com/herb39/javaweb18S/assets/130042779/b4fd31a9-6201-44da-b991-f108f324f2f4"><h1>913</h1>
+![image](https://github.com/herb39/javaweb18S/assets/130042779/5afb8527-25f2-448a-9f9c-eec752c83ad8)<img width="1152" alt="image" src="https://github.com/herb39/javaweb18S/assets/130042779/b4fd31a9-6201-44da-b991-f108f324f2f4"><h1>913</h1>
 
 > 음원 스트리밍, 굿즈 판매 사이트 제작 <br/>
 > 기간 : 2023.06.29 - 2023.07.31 <br/>
@@ -96,8 +96,16 @@
             <strong>메인 페이지</strong>
             <ul>
                 <img src="https://i.imgur.com/e6e2ogX.png" width="500px">
-                <li>음원 검색 가능</li>
+                <li>인기 차트 100 / 음원 검색 가능</li>
                   <img src="https://i.imgur.com/bLE4f2X.png" width="500px">
+            </ul>
+        </li>
+        <br/>
+        <li>
+            <strong>음원 플레이어</strong>
+            <ul>
+                <li>재생 위치 변경, 볼륨 조절, 가사 보기 가능</li>
+                  <img src="https://i.imgur.com/c2TWmEh.png" width="500px">
             </ul>
         </li>
         <br/>
@@ -128,16 +136,13 @@
             </ul>
         </li>
         <br/>
-        <br/>
         <li>
             <strong>장바구니</strong>
             <ul>
                 <li>개별 혹은 선택주문</li>
                 <li>선택 삭제 가능</li>
                 <li>배송비 5만원 이상일 경우 0원으로, 이하일 경우 2500원으로 변경</li>
-                <li>
                     <img src="https://i.imgur.com/sjqNtId.png" width="500px">
-                </li>
             </ul>
         </li>
         <br/>
