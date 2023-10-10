@@ -100,14 +100,6 @@
         </li>
         <br/>
         <li>
-            <strong>음원 플레이어</strong>
-            <ul>
-                <li>재생 위치 변경, 볼륨 조절, 가사 보기 가능</li>
-                  <img src="https://i.imgur.com/c2TWmEh.png" width="500px">
-            </ul>
-        </li>
-        <br/>
-        <li>
             <strong>로그인/회원가입/아이디찾기/비밀번호찾기</strong>
             <ul>
                 <li>아이디 중복검사</li>
@@ -115,6 +107,14 @@
                 <li>SMTP이용 - 임시비밀번호 재발급</li>
                   <img src="https://i.imgur.com/chBvyvC.png" width="500px">
                   <img src="https://i.imgur.com/rt1fkSG.png" width="500px">
+            </ul>
+        </li>
+        <br/>
+        <li>
+            <strong>음원 플레이어</strong>
+            <ul>
+                <li>재생 위치 변경, 볼륨 조절, 가사 보기 가능</li>
+                  <img src="https://i.imgur.com/c2TWmEh.png" width="500px">
             </ul>
         </li>
         <br/>
@@ -164,10 +164,33 @@
         </li>
         <br/>
         <li>
+            <strong>자유 게시판</strong>
+            <ul>
+                <li>로그인 한 회원만 글 작성, 수정, 삭제 가능</li>
+                <li>페이징 처리 / 키워드 검색 가능</li>
+                    <img src="https://i.imgur.com/4VQCpQq.png" width="500px">
+                <li>ckeditor 이미지 업로드 가능</li>
+                    <img src="https://i.imgur.com/vmVOSlt.png" width="500px">
+                <li>댓글 작성, 수정, 삭제 가능</li>
+                    <img src="https://i.imgur.com/WPbBnve.png" width="500px">
+            </ul>
+        </li>
+        <br/>
+        <li>
             <strong>관리자 페이지 메인</strong>
             <ul>
-                <li>최근 5건의 주문 목록, CS 통계</li>
-                <img src="https://i.imgur.com/Nx5Gvb6.png" width="500px">
+                <li>최근 가입한 회원 / 최근 추가한 곡</li>
+                <img src="https://i.imgur.com/sbcmEoJ.png" width="500px">
+            </ul>
+        </li>
+        <br/>
+        <li>
+            <strong>관리자 음원 정보 관리</strong>
+            <ul>
+                <li>음원 정보 등록 가능</li>
+                   <img src="https://i.imgur.com/cSHsMcW.png" width="500px">
+                <li>등록된 음원 정보 수정, 삭제 가능</li>
+                   <img src="https://i.imgur.com/OIr9sOA.png" width="500px">
             </ul>
         </li>
         <br/>
@@ -177,32 +200,8 @@
                 <li>카테고리 생성/삭제 가능</li>
                 <li>대분류 선택 후 동적으로 중분류 활성화</li>
                 <li>카테고리 삭제 - 해당 카테고리 내에 상품이 1개도 없을 경우 삭제 가능</li>
-                <li>상품 추가 - 이미지 드래그&드롭을 통한 업로드 기능, 썸네일 지정 가능, CK에디터 사용</li>
-                <li>상품 리스트 - TOAST UI Grid 이용, 리스트에서 더블클릭으로 상품 정보 수정 가능</li>
-                <li>상품 삭제 - 주문이 1건도 들어오지 않은 경우 삭제 가능</li>
-                <img src="https://i.imgur.com/BXLgIqG.png" width="500px">
-                <img src="https://imgur.com/MeEavtF.png" width="500px">
-                <img src="https://i.imgur.com/BXLgIqG.png" width="500px">
-                <img src="https://imgur.com/hiJZIqM.png" width="500px">
-            </ul>
-        </li>
-         <br/>
-        <li>
-            <strong>관리자 페이지 주문목록</strong>
-            <ul>
-                <li>주문상태 변경 기능</li>
-                <li>쿼리스트링, AJAX 이용 - 비동기식 검색 및 갱신</li>
-                <li>선택 주문 주문상태 변경 가능</li>
-                <img src="https://imgur.com/EEiPcdp.png" width="500px">
-                <img src="https://imgur.com/IZeVU0j.png" width="500px">
-            </ul>
-        </li>
-        <br/>
-        <li>
-            <strong>관리자 페이지 상품배송</strong>
-            <ul>
-                <li>배송중인 주문만 표시</li>
-                <li>운송장 입력후 배송시 해당 주문 배송상태를 '배송중'으로 변경</li>
+                <img src="https://i.imgur.com/cSHsMcW.png" width="500px">
+                <img src="https://i.imgur.com/7WU6CJS.png" width="500px">
             </ul>
         </li>
         <br/>
