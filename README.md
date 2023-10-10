@@ -1,4 +1,4 @@
-<h1>913</h1>
+<img width="1152" alt="image" src="https://github.com/herb39/javaweb18S/assets/130042779/b4fd31a9-6201-44da-b991-f108f324f2f4"><h1>913</h1>
 
 > 음원 스트리밍, 굿즈 판매 사이트 제작 <br/>
 > 기간 : 2023.06.29 - 2023.07.31 <br/>
@@ -113,25 +113,18 @@
         </li>
         <br/>
         <li>
-            <strong>MyPage</strong>
+            <strong>마이페이지</strong>
             <ul>
-                <li>회원탈퇴, 회원수정 가능</li>
-                <li>주문상세보기 클릭시 해당 주문 관련 정보를 팝업으로 표시</li>
-                <li>쿠폰 사용 내역, 적립금 사용 내역 조회 가능</li>
-                    <img src="https://i.imgur.com/gnNQP3y.png" width="500px">
+                <li>장바구니, 배송정보, 회원탈퇴, 회원수정 가능</li>
             </ul>
         </li>
         <li>
-            <strong>상품, 상품리뷰, 상품 QnA</strong>
+            <strong>굿즈</strong>
             <ul>
-                <li>중분류 선택 정렬 가능 (등록일순/상품평순/높은가격순/낮은가격순)</li>
+                <li>아티스트 선택 정렬 가능</li>
                 <li>수량 변경 가능</li>
-                <li>리뷰 : 상품 구매 후 구매확정시에만 리뷰 작성 가능, 페이징 처리</li>
-                <li>QnA : 비공개여부 선택 가능, 관리자 페이지에서 답글 가능</li>
-                    <img src="https://i.imgur.com/GlNblvb.png" width="500px">
-                    <img src="https://i.imgur.com/N1ykOd3.png" width="500px">
-                    <img src="https://i.imgur.com/YAe4T38.png" width="500px">
-                    <img src="https://i.imgur.com/EwwTZ1M.png" width="500px">
+                    <img src="https://i.imgur.com/cuQxUhx.png" width="500px">
+                    <img src="https://i.imgur.com/1OlyRRs.png" width="500px">
             </ul>
         </li>
         <br/>
@@ -141,9 +134,9 @@
             <ul>
                 <li>개별 혹은 선택주문</li>
                 <li>선택 삭제 가능</li>
-                <li>배송비 5만원 이상일 경우 0원으로, 이하일 경우 3천원으로 변경</li>
+                <li>배송비 5만원 이상일 경우 0원으로, 이하일 경우 2500원으로 변경</li>
                 <li>
-                    <img src="https://i.imgur.com/TYzsyGM.png" width="500px">
+                    <img src="https://i.imgur.com/sjqNtId.png" width="500px">
                 </li>
             </ul>
         </li>
@@ -154,8 +147,7 @@
                 <li>구매하려는 상품 목록 표시</li>
                 <li>구매 클릭시 프론트에서 배송정보 유효성 검사후 결제 진행</li>
                 <li>무통장입금, 가상계좌 결제 가능</li>
-                <li>쿠폰 및 적립금 사용 가능</li>
-                    <img src="https://i.imgur.com/jJUXRfe.png" width="500px">
+                    <img src="https://i.imgur.com/kvVDu99.png" width="500px">
             </ul>
         </li>
       <li>
@@ -163,9 +155,7 @@
             <ul>
                 <li>주문 날짜 별 검색 가능</li>
                 <li>주문한 상품에 대한 기본 정보 표시</li>
-                <li>가상계좌 구매시 계좌번호 표시 - Iamport API & 스케줄러 이용, 10분마다 무통장입금 결제 자동 확인</li>
-                    <img src="https://i.imgur.com/9m5VwEz.png" width="500px">
-                    <img src="https://imgur.com/v5cNxVu.png" width="500px">
+                    <img src="https://i.imgur.com/JoaEHuM.png" width="500px">
             </ul>
         </li>
         <br/>
