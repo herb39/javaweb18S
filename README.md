@@ -4,9 +4,9 @@
 > 기간 : 2023.06.29 - 2023.07.31 <br/>
 > 인원 : 1인 <br/>
 
-링크 : http://ec2-43-201-203-237.ap-northeast-2.compute.amazonaws.com:8080/javaweb18S/
-관리자 ID : admin
-관리자 PW : 1234
+링크 : http://ec2-43-201-203-237.ap-northeast-2.compute.amazonaws.com:8080/javaweb18S/ <br />
+관리자 ID : admin <br />
+관리자 PW : 1234 <br />
 
 <h1>사용 기술 스택</h1>
 <ul>
